@@ -40,7 +40,7 @@ function displayMovies(movies) {
     img.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
     img.alt = movie.title;
 
-    // Conteneur pour le titre et la description
+    // Description et titre du film
     const info = document.createElement('div');
     info.className = 'movie-info';
 
@@ -54,14 +54,14 @@ function displayMovies(movies) {
       ? movie.overview.slice(0, 100) + "..."
       : movie.overview;
 
-    // Ajout aux favoris à l'aide d'un bouton
+    // Bouton favoris 
     const btn = document.createElement('button');
     btn.textContent = 'Add to favorites';
 
     btn.addEventListener('click', () => {
       let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
-      // Si le film n'apparait pas en favoris, on l'ajoute
+      // Ajout en Favoris si ce n'est pas réalisé 
       if (!favorites.includes(movie.id)) {
         favorites.push(movie.id);
         localStorage.setItem('favorites', JSON.stringify(favorites));
@@ -78,7 +78,7 @@ function displayMovies(movies) {
   });
 }
 
-// récuperation de la page avec les données chargées de l'API
+// récuperation des données chargées par l'API
 document.addEventListener('DOMContentLoaded', () => {
   fetchMovies(); // On récupère les films de la première page
 });
