@@ -1,16 +1,14 @@
 // Clé API
 const apiKey = 'a162de1ec65ccd82900e0f7af3843061';
-
 // Récuperation des films par rapport à l'API
 async function fetchMovies(page = 1) {
   try {
     // Appel à l'API 
     const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=${page}`);
-    const data = await response.json(); // On transforme la réponse en JSON
-
+    const data = await response.json(); 
+    // On transforme la réponse en JSON
     // Affichage des films en console 
     console.log("Films récupérés :", data.results);
-
     // On passe les films récupérés 
     displayMovies(data.results);
   } catch (error) {
@@ -70,7 +68,6 @@ function displayMovies(movies) {
         alert(`"${movie.title}" est déjà dans tes favoris.`);
       }
     });
-
     // Ajout des films à la une
     info.append(title, desc, btn);
     card.append(img, info);
@@ -78,7 +75,6 @@ function displayMovies(movies) {
   });
 }
 
-// récuperation des données chargées par l'API
 document.addEventListener('DOMContentLoaded', () => {
   fetchMovies(); // On récupère les films de la première page
 });
