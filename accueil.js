@@ -1,10 +1,9 @@
-const API_KEY = 'YOUR_TMDB_API_KEY'; // Remplacez par votre clé API TMDB
+const API_KEY = 'a162de1ec65ccd82900e0f7af3843061'; // Remplacez par votre clé API TMDB
 const BASE_URL = 'https://api.themoviedb.org/3';
 let currentPage = {
     movies: 1,
     series: 1
-};
-
+}
 // Navigation
 function showSection(sectionId) {
     document.querySelectorAll('main section').forEach(section => section.classList.add('hidden'));
@@ -37,7 +36,6 @@ async function fetchMovies(page = 1) {
         console.error('Erreur lors du chargement des films:', error);
     }
 }
-
 // Fetch Series for Home and Series Page
 async function fetchSeries(page = 1) {
     try {
@@ -219,9 +217,40 @@ async function fetchSimilar(id, type) {
         console.error('Erreur lors du chargement des suggestions:', error);
     }
 }
+async function fetchRandomPopularMovies() {
+    try {
+        // Récupérer les films populaires depuis l'API TMDB
+        const response = await axios.get(`${BASE_URL}/movie/popular`, {
+            params: { api_key: API_KEY, page: Math.floor(Math.random() * 10) + 1 } // Page aléatoire
+        });
+        const movies = response.data.results;
 
+        // Sélectionner un sous-ensemble aléatoire de films
+        const randomMovies = movies.sort(() => 0.5 - Math.random()).slice(0, 5);
+
+        // Afficher les films dans la section "popular-movies"
+        const container = document.getElementById('popular-movies');
+        container.innerHTML = '';
+        randomMovies.forEach(movie => {
+            const card = document.createElement('div');
+            card.className = 'movie-card';
+            card.innerHTML = `
+                <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.title}" class="movie-poster">
+                <h3 class="movie-title">${movie.title}</h3>
+                <button class="details-button" onclick="showDetail('${movie.id}', 'movie')">Détails</button>
+            `;
+            container.appendChild(card);
+        });
+    } catch (error) {
+        console.error('Erreur lors du chargement des films populaires :', error);
+    }
+}
+
+// Appeler la fonction au chargement de la page
+fetchRandomPopularMovies();
 // Search with Autocomplete
-document.getElementById('searchInput').addEventListener('input', async (e) => {
+document.getElementById('search-input').addEventListener('input', async (e) => {
+
     const query = e.target.value;
     if (query.length < 3) {
         document.getElementById('autocompleteResults').classList.add('hidden');
