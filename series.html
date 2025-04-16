@@ -2,25 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Movies</title>
-  <link rel="stylesheet" href="CSS/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Series</title>
+  <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
   <header>
-    <h1>Popular Movies</h1>
+    <h1>TV Shows</h1>
+    <nav>
+      <a href="accueil.html">Home</a>
+      <a href="movies.html">Movies</a>
+      <a href="series.html" class="active">Series</a>
+      <a href="favorites.html">Favorites</a>
+    </nav>
   </header>
 
   <main>
-    <div id="movies-container"></div>
-
-    <div id="pagination">
-      <button id="prevPage">⬅️ Previous</button>
-      <span id="pageNumber">Page 1</span>
-      <button id="nextPage">Next ➡️</button>
-    </div>
+    <div id="series-container" class="card-container"></div>
+    <div id="pagination"></div>
   </main>
 
-  <script src="series.js" defer></script>
+  <script src="series.js" type="module"></script>
 </body>
 </html>
