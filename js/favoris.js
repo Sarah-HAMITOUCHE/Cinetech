@@ -29,12 +29,12 @@ function displayFavorites() {
         const img = document.createElement('img');
         img.src = item.poster_path 
             ? `https://image.tmdb.org/t/p/w500${item.poster_path}` 
-            : 'path/to/default-image.jpg'; // Remplacez par le chemin de votre image par défaut
+            : 'https://via.placeholder.com/150?text=Image+indisponible'; // Image par défaut
         img.alt = item.title || item.name || 'Titre indisponible';
 
         // Vérifiez si le titre ou le nom est valide
         const title = document.createElement('h3');
-        title.textContent = item.title || item.name || 'Titre indisponible';
+        title.textContent = item.title || item.name || 'Nom non disponible';
 
         // Bouton pour retirer des favoris
         const removeBtn = document.createElement('button');
@@ -55,6 +55,5 @@ function removeFavorite(id) {
     saveFavorites(favorites);
     displayFavorites();
 }
-
 // Charger les favoris au chargement de la page
 document.addEventListener('DOMContentLoaded', displayFavorites);
