@@ -1,7 +1,5 @@
-// Clé API
 const apiKey = 'a162de1ec65ccd82900e0f7af3843061';
 
-// Fonction pour récupérer les séries populaires
 async function fetchSeries(page = 1) {
   try {
     const response = await fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${apiKey}&language=en-US&page=${page}`);
@@ -12,7 +10,6 @@ async function fetchSeries(page = 1) {
   }
 }
 
-// Fonction pour afficher les séries dans le DOM
 function displaySeries(series) {
   const container = document.getElementById('series-container');
   container.innerHTML = '';
@@ -26,12 +23,10 @@ function displaySeries(series) {
     const card = document.createElement('div');
     card.className = 'movie-card';
 
-    // Image de la série
     const img = document.createElement('img');
     img.src = `https://image.tmdb.org/t/p/w500${serie.poster_path}`;
     img.alt = serie.name;
 
-    // Contenu texte
     const info = document.createElement('div');
     info.className = 'movie-info';
 
@@ -43,7 +38,6 @@ function displaySeries(series) {
       ? serie.overview.slice(0, 100) + "..."
       : serie.overview;
 
-    // Bouton Favoris
     const favBtn = document.createElement('button');
     favBtn.textContent = 'Add to favorites';
     favBtn.addEventListener('click', () => {
@@ -57,20 +51,19 @@ function displaySeries(series) {
       }
     });
 
-    // Lien vers la page détail
-    const detailLink = document.createElement('a');
-    detailLink.href = `detail.html?type=tv&id=${serie.id}`;
-    detailLink.textContent = 'View details';
-    detailLink.className = 'detail-link';
+    const detailBtn = document.createElement('button');
+    detailBtn.textContent = 'View details';
+    detailBtn.className = 'detail-button';
+    detailBtn.addEventListener('click', () => {
+      window.location.href = `detail.html?type=tv&id=${serie.id}`;
+    });
 
-    // Regroupement des éléments
-    info.append(title, desc, favBtn, detailLink);
+    info.append(title, desc, favBtn, detailBtn);
     card.append(img, info);
     container.appendChild(card);
   });
 }
 
-// Chargement initial
 document.addEventListener('DOMContentLoaded', () => {
   fetchSeries();
 });
