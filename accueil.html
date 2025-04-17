@@ -4,59 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cinetech - Accueil</title>
-    <link rel="stylesheet" href="css/movies.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <h1>Cinetech</h1>
         <nav>
-            <a href="accueil.html">Accueil</a>
+            <a href="accueil.html" class="active">Accueil</a>
             <a href="Movies.html">Films</a>
             <a href="series.html">Séries</a>
-            <a href="favoris.html">Favoris</a>
+            <a href="favorites.html">Favoris</a>
         </nav>
-        <div class="search-container">
-            <input type="text" id="search-input" placeholder="Rechercher...">
-            <div id="autocompleteResults" class="autocomplete"></div>
-        </div>
     </header>
 
     <main>
-        <section class="hero">
-            <h2>Découvrez notre collection</h2>
+        <section>
+            <h2>Films Aléatoires</h2>
+            <div id="random-movies-container" class="items-container"></div>
         </section>
 
-        <section class="trending">
-            <h2>Films populaires</h2>
-            <div class="carousel" id="popular-movies"></div>
-            
-            <h2>Séries populaires</h2>
-            <div class="carousel" id="popular-series"></div>
-        </section>
-        <section id="detail" class="hidden">
-            <div id="detailContent"></div>
-            <div id="commentsList"></div>
-            <textarea id="newComment" placeholder="Votre commentaire..."></textarea>
-            <button id="submitComment">Envoyer</button>
-            <div id="similarContent"></div>
-        </section>
-        <section id="movies" class="hidden">
-            <div id="movieList"></div>
-            <div id="moviePagination"></div>
-        </section>
-
-        <section id="series" class="hidden">
-            <div id="seriesList"></div>
-            <div id="seriesPagination"></div>
-        </section>
-
-        <section id="favorites" class="hidden">
-            <div id="favoritesList"></div>
+        <section>
+            <h2>Séries Aléatoires</h2>
+            <div id="random-series-container" class="items-container"></div>
         </section>
     </main>
+
     <footer>
+        <p>&copy; 2025 Cinetech. Tous droits réservés.</p>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="accueil.js" type="module"></script>
+
+    <script src="accueil.js" defer></script>
 </body>
 </html>
