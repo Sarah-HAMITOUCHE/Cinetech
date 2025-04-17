@@ -13,6 +13,7 @@ function saveFavorites(favorites) {
 function displayFavorites() {
     const favoritesContainer = document.getElementById('favorites-container');
     const favorites = getFavorites();
+    console.log(favorites,"favoris")
 
     favoritesContainer.innerHTML = '';
 
@@ -22,14 +23,25 @@ function displayFavorites() {
     }
 
     favorites.forEach(item => {
+        console.log(item.poster_path,"item.poster_path")
         const card = document.createElement('div');
         card.className = 'item-card';
 
         // Vérifiez si poster_path est valide, sinon utilisez une image par défaut
         const img = document.createElement('img');
-img.src = item.poster_path 
-    ? `https://image.tmdb.org/t/p/w500${item.poster_path}` 
-    : 'https://via.placeholder.com/150?text=Image+indisponible'; // Image par défaut
+
+        if(item.poster_path) {
+            img.src = `https://image.tmdb.org/t/p/w500${item.poster_path}`
+            console.log('yotyo')
+        }
+        else{
+            img.src ='https://imgs.search.brave.com/z2eZop3i65EcIQe2Ejby0yML2Sky8jk7c2dftdU1Teg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvODUy/MDU4OTc4L3ZlY3Rv/ci9lbW9qaS1kZWFk/LTQwNC1lcnJvci5q/cGc_cz02MTJ4NjEy/Jnc9MCZrPTIwJmM9/NnBEMEhWV2U2Zk5h/MHE1TElqaU1fTGVj/TEdzMWNIZExEQU5y/TVdDTWQtVT0';
+        }
+
+
+
+//     ? `https://image.tmdb.org/t/p/w500${item.poster_path}` 
+//     :  // Image par défaut
 img.alt = item.title || item.name || 'Titre indisponible';
 
 const title = document.createElement('h3');
