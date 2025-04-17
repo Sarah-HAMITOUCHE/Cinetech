@@ -27,14 +27,13 @@ function displayFavorites() {
 
         // Vérifiez si poster_path est valide, sinon utilisez une image par défaut
         const img = document.createElement('img');
-        img.src = item.poster_path 
-            ? `https://image.tmdb.org/t/p/w500${item.poster_path}` 
-            : 'https://via.placeholder.com/150?text=Image+indisponible'; // Image par défaut
-        img.alt = item.title || item.name || 'Titre indisponible';
+img.src = item.poster_path 
+    ? `https://image.tmdb.org/t/p/w500${item.poster_path}` 
+    : 'https://via.placeholder.com/150?text=Image+indisponible'; // Image par défaut
+img.alt = item.title || item.name || 'Titre indisponible';
 
-        // Vérifiez si le titre ou le nom est valide
-        const title = document.createElement('h3');
-        title.textContent = item.title || item.name || 'Nom non disponible';
+const title = document.createElement('h3');
+title.textContent = item.title || item.name || 'Nom non disponible';
 
         // Bouton pour retirer des favoris
         const removeBtn = document.createElement('button');
