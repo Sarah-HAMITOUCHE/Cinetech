@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cinetech - Accueil</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/movies.css">
 </head>
 <body>
     <header>
@@ -17,7 +17,7 @@
         </nav>
         <div class="search-container">
             <input type="text" id="search-input" placeholder="Rechercher...">
-            <div id="search-results" class="autocomplete"></div>
+            <div id="autocompleteResults" class="autocomplete"></div>
         </div>
     </header>
 
@@ -33,12 +33,30 @@
             <h2>Séries populaires</h2>
             <div class="carousel" id="popular-series"></div>
         </section>
+        <section id="detail" class="hidden">
+            <div id="detailContent"></div>
+            <div id="commentsList"></div>
+            <textarea id="newComment" placeholder="Votre commentaire..."></textarea>
+            <button id="submitComment">Envoyer</button>
+            <div id="similarContent"></div>
+        </section>
+        <section id="movies" class="hidden">
+            <div id="movieList"></div>
+            <div id="moviePagination"></div>
+        </section>
+
+        <section id="series" class="hidden">
+            <div id="seriesList"></div>
+            <div id="seriesPagination"></div>
+        </section>
+
+        <section id="favorites" class="hidden">
+            <div id="favoritesList"></div>
+        </section>
     </main>
     <footer>
     </footer>
-
-    <script src="js/api.js" type="module"></script>
-    <script src="js/main.js" type="module"></script>
-    <script src="js/search.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="accueil.js" type="module"></script>
 </body>
 </html>
