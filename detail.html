@@ -1,19 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Detail</title>
-  <link rel="stylesheet" href="CSS/accueil.css">
+  <title>Détails</title>
+  <link rel="stylesheet" href="CSS/detail.css">
 </head>
 <body>
   <header>
     <h1>Détails</h1>
   </header>
 
-  <main id="detail-container">
-    <p>Chargement...</p>
+  <main>
+    <!-- Détails du film ou de la série -->
+    <div id="detail-container">
+      <p>Chargement...</p>
+    </div>
+
+    <!-- Commentaires venant de TMDB -->
+    <section id="reviews-container">
+      <!-- Commentaires API TMDB -->
+    </section>
+
+    <!-- Ajout de commentaire utilisateur -->
+    <section id="user-comments">
+      <h3>Ajouter un commentaire</h3>
+      <textarea id="user-comment-input" rows="4" placeholder="Ton avis..."></textarea>
+      <br />
+      <button id="submit-comment">Publier</button>
+
+      <!-- Commentaires utilisateur stockés en localStorage -->
+      <div id="user-comments-list"></div>
+    </section>
   </main>
 
-  <script src="js/detail.js" type="module"></script>
+  <script src="js/detail.js" defer></script>
 </body>
 </html>
