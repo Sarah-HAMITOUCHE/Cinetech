@@ -52,7 +52,7 @@ function displaySeries(series) {
     });
 
     const detailBtn = document.createElement('button');
-    detailBtn.textContent = 'View details';
+    detailBtn.textContent = 'Voir les détails';
     detailBtn.className = 'detail-button';
     detailBtn.addEventListener('click', () => {
       window.location.href = `detail.html?type=tv&id=${serie.id}`;
