@@ -12,7 +12,6 @@ body {
   line-height: 1.6;
 }
 
-/* En-tête */
 header {
   background: #1f1f1f;
   padding: 1.5rem 2rem;
@@ -46,71 +45,53 @@ nav a.active {
   color: #ff3d00;
 }
 
-/* Contenu principal */
 main {
   padding: 2rem;
 }
 
-section {
-  margin-bottom: 3rem;
-}
-
-section h2 {
-  font-size: 2.4rem; /* Augmenté ici */
+main h2 {
+  font-size: 2rem;
   margin-bottom: 1.5rem;
   color: #ff3d00;
 }
 
-/* Grille des éléments aléatoires */
-.items-container {
+#favorites-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 1.5rem;
 }
 
-/* Carte d’un film/série */
-.item-card {
+.favorite-card {
   background-color: #1e1e1e;
   border-radius: 12px;
   overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.item-card:hover {
+.favorite-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 10px 20px rgba(255, 61, 0, 0.3);
 }
 
-.item-card img {
+.favorite-card img {
   width: 100%;
   height: auto;
   display: block;
 }
 
-.item-card .item-info {
+.favorite-card .favorite-info {
   padding: 1rem;
 }
 
-.item-card .item-title {
+.favorite-card .favorite-title {
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
   color: #ffffff;
 }
 
-.item-card .item-year {
+.favorite-card .favorite-year {
   font-size: 0.9rem;
   color: #aaaaaa;
-}
-
-/* Pied de page */
-footer {
-  background-color: #1f1f1f;
-  text-align: center;
-  padding: 1rem;
-  font-size: 0.9rem;
-  color: #bbbbbb;
-  border-top: 2px solid #333;
-  margin-top: auto;
 }
 
 /* Responsive */
@@ -127,7 +108,7 @@ footer {
     align-items: flex-start;
   }
 
-  .items-container {
+  #favorites-container {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
 }
