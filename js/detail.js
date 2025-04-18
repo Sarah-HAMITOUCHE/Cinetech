@@ -104,7 +104,7 @@ function displayRecommendations(recommendations) {
   container.appendChild(recList);
 }
 
-// Charger les détails de l'élément lorsque la page est prête
+// Charger les détails de la série ou du film 
 document.addEventListener('DOMContentLoaded', () => {
   fetchDetails();
 });
