@@ -63,3 +63,12 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchRandomMovies();
     fetchRandomSeries();
 });
+// Exemple dans accueil.js
+favoriteBtn.addEventListener('click', () => {
+    addFavorite({
+        id: item.id,
+        title: item.title || item.name, // Vérifie si c'est un film ou une série
+        poster_path: item.poster_path, // Vérifie que l'image existe
+        type: type // Ajoute le type (movie ou tv) si nécessaire
+    });
+});
