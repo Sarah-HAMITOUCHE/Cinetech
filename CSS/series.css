@@ -40,84 +40,50 @@
     transition: color 0.3s;
   }
   
-  nav a:hover {
+  nav a:hover,
+  nav a.active {
     color: #ff3d00;
-  }
-  
-  .search-container {
-    position: relative;
-    margin-top: 1rem;
-    flex-grow: 1;
-    max-width: 300px;
-  }
-  
-  #search-input {
-    width: 100%;
-    padding: 0.6rem 1rem;
-    border: none;
-    border-radius: 8px;
-    background-color: #2c2c2c;
-    color: white;
-    font-size: 1rem;
-  }
-  
-  .autocomplete {
-    position: absolute;
-    top: 110%;
-    left: 0;
-    right: 0;
-    background-color: #2c2c2c;
-    border-radius: 6px;
-    z-index: 10;
-    max-height: 200px;
-    overflow-y: auto;
   }
   
   main {
     padding: 2rem;
   }
   
-  main h1 {
-    font-size: 2.2rem;
-    margin-bottom: 1.5rem;
-    color: #ff3d00;
-  }
-  
-  #movies-container {
+  #series-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 1.5rem;
   }
   
-  .movie-card {
+  .series-card {
     background-color: #1e1e1e;
     border-radius: 12px;
     overflow: hidden;
     transition: transform 0.3s, box-shadow 0.3s;
   }
   
-  .movie-card:hover {
+  .series-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 10px 20px rgba(255, 61, 0, 0.3);
   }
   
-  .movie-card img {
+  .series-card img {
     width: 100%;
     height: auto;
     display: block;
   }
   
-  .movie-card .movie-info {
+  .series-card .series-info {
     padding: 1rem;
   }
   
-  .movie-card .movie-title {
+  .series-card .series-title {
     font-size: 1.1rem;
     margin-bottom: 0.5rem;
     color: #ffffff;
   }
   
-  .movie-card .movie-year {
+  .series-card .series-year {
     font-size: 0.9rem;
     color: #aaaaaa;
   }
@@ -159,19 +125,12 @@
       flex-wrap: wrap;
     }
   
-    .search-container {
-      width: 100%;
-      margin-top: 1rem;
-    }
-  
     header {
       flex-direction: column;
       align-items: flex-start;
     }
+  
     #series-container {
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    }
-    #movies-container {
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }
   }
