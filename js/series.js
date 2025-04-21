@@ -42,8 +42,9 @@ function displaySeries(series) {
     favBtn.textContent = 'Add to favorites';
     favBtn.addEventListener('click', () => {
       let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-      if (!favorites.includes(serie.id)) {
-        favorites.push(serie.id);
+      const alreadyFav = favorites.find(fav => fav.id === serie.id && fav.type === 'tv');
+      if (!alreadyFav) {
+        favorites.push({ id: serie.id, type: 'tv' });
         localStorage.setItem('favorites', JSON.stringify(favorites));
         alert(`"${serie.name}" ajoutée aux favoris !`);
       } else {
@@ -52,7 +53,7 @@ function displaySeries(series) {
     });
 
     const detailBtn = document.createElement('button');
-    detailBtn.textContent = 'Voir les détails';
+    detailBtn.textContent = 'View details';
     detailBtn.className = 'detail-button';
     detailBtn.addEventListener('click', () => {
       window.location.href = `detail.html?type=tv&id=${serie.id}`;

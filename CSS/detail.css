@@ -1,6 +1,4 @@
-/* detail.css ou ajouté dans style.css */
 
-/* Reset de base */
 * {
     margin: 0;
     padding: 0;
@@ -12,62 +10,5 @@
     background-color: #121212;
     color: #ffffff;
     line-height: 1.6;
-  }
-  
-  /* En-tête */
-  header {
-    background: #1f1f1f;
-    padding: 1.5rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start; /* aligne à gauche */
-    border-bottom: 2px solid #333;
-  }
-  
-  header h1 {
-    font-size: 2rem;
-    color: #ff3d00;
-    letter-spacing: 2px;
-  }
-  
-  
-  /* Contenu principal */
-  main#detail-container {
-    padding: 2rem;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-  
-  #detail-container h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    color: #ff3d00;
-  }
-  
-  #detail-container p,
-  #detail-container ul {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    color: #cccccc;
-  }
-  
-  /* Image ou contenu visuel */
-  #detail-container img {
-    width: 100%;
-    max-width: 400px;
-    border-radius: 12px;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-  }
-  
-  /* Responsive */
-  @media (max-width: 768px) {
-    main#detail-container {
-      padding: 1.5rem;
-    }
-  
-    header h1 {
-      font-size: 1.5rem;
-    }
   }
   
