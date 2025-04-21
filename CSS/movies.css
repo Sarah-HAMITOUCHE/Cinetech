@@ -168,7 +168,9 @@
       flex-direction: column;
       align-items: flex-start;
     }
-  
+    #series-container {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
     #movies-container {
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }
