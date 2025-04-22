@@ -1,70 +1,70 @@
-// Fonction pour récupérer les favoris depuis le localStorage
+const apiKey = 'a162de1ec65ccd82900e0f7af3843061';
+
 function getFavorites() {
-    const favorites = localStorage.getItem('favorites');
-    return favorites ? JSON.parse(favorites) : [];
+  const favorites = localStorage.getItem('favorites');
+  return favorites ? JSON.parse(favorites) : [];
 }
 
-// Fonction pour sauvegarder les favoris dans le localStorage
 function saveFavorites(favorites) {
-    localStorage.setItem('favorites', JSON.stringify(favorites));
+  localStorage.setItem('favorites', JSON.stringify(favorites));
 }
 
-// Fonction pour afficher les favoris dans la page
-function displayFavorites() {
-    const favoritesContainer = document.getElementById('favorites-container');
-    const favorites = getFavorites();
-    console.log(favorites,"favoris")
+async function fetchFavoriteDetail(id, type = 'movie') {
+  try {
+    const res = await fetch(`https://api.themoviedb.org/3/${type}/${id}?api_key=${apiKey}&language=fr-FR`);
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error("Erreur lors de la récupération des détails du favori :", error);
+    return null;
+  }
+}
 
-    favoritesContainer.innerHTML = '';
+async function displayFavorites() {
+  const favoritesContainer = document.getElementById('favorites-container');
+  const favorites = getFavorites();
 
-    if (favorites.length === 0) {
-        favoritesContainer.innerHTML = '<p>Aucun favori pour le moment.</p>';
-        return;
-    }
+  favoritesContainer.innerHTML = '';
 
-    favorites.forEach(item => {
-        console.log(item.poster_path,"item.poster_path")
-        const card = document.createElement('div');
-        card.className = 'item-card';
+  if (favorites.length === 0) {
+    favoritesContainer.innerHTML = '<p>Aucun favori pour le moment.</p>';
+    return;
+  }
 
-        // Vérifiez si poster_path est valide, sinon utilisez une image par défaut
-        const img = document.createElement('img');
+  for (const fav of favorites) {
+    const type = fav.type || 'movie'; // par défaut "movie", sinon "tv"
+    const data = await fetchFavoriteDetail(fav.id, type);
+    if (!data) continue;
 
-        if(item.poster_path) {
-            img.src = `https://image.tmdb.org/t/p/w500${item.poster_path}`
-            console.log('yotyo')
-        }
-        else{
-            img.src ='https://imgs.search.brave.com/z2eZop3i65EcIQe2Ejby0yML2Sky8jk7c2dftdU1Teg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvODUy/MDU4OTc4L3ZlY3Rv/ci9lbW9qaS1kZWFk/LTQwNC1lcnJvci5q/cGc_cz02MTJ4NjEy/Jnc9MCZrPTIwJmM9/NnBEMEhWV2U2Zk5h/MHE1TElqaU1fTGVj/TEdzMWNIZExEQU5y/TVdDTWQtVT0';
-        }
+    const card = document.createElement('div');
+    card.className = 'item-card';
 
+    const img = document.createElement('img');
+    img.src = data.poster_path
+      ? `https://image.tmdb.org/t/p/w500${data.poster_path}`
+      : 'https://via.placeholder.com/300x450?text=No+Image';
 
+    img.alt = data.title || data.name || 'Titre inconnu';
 
-//     ? `https://image.tmdb.org/t/p/w500${item.poster_path}` 
-//     :  // Image par défaut
-img.alt = item.title || item.name || 'Titre indisponible';
+    const title = document.createElement('h3');
+    title.textContent = data.title || data.name || 'Nom non disponible';
 
-const title = document.createElement('h3');
-title.textContent = item.title || item.name || 'Nom non disponible';
-
-        // Bouton pour retirer des favoris
-        const removeBtn = document.createElement('button');
-        removeBtn.textContent = 'Retirer des favoris';
-        removeBtn.addEventListener('click', () => {
-            removeFavorite(item.id);
-        });
-
-        card.append(img, title, removeBtn);
-        favoritesContainer.appendChild(card);
+    const removeBtn = document.createElement('button');
+    removeBtn.textContent = 'Retirer des favoris';
+    removeBtn.addEventListener('click', () => {
+      removeFavorite(fav.id);
     });
+
+    card.append(img, title, removeBtn);
+    favoritesContainer.appendChild(card);
+  }
 }
 
-// Fonction pour retirer un favori
 function removeFavorite(id) {
-    let favorites = getFavorites();
-    favorites = favorites.filter(item => item.id !== id);
-    saveFavorites(favorites);
-    displayFavorites();
+  let favorites = getFavorites();
+  favorites = favorites.filter(item => item.id !== id);
+  saveFavorites(favorites);
+  displayFavorites();
 }
-// Charger les favoris au chargement de la page
+
 document.addEventListener('DOMContentLoaded', displayFavorites);
