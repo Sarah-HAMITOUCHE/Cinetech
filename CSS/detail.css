@@ -1,14 +1,162 @@
-
+/* RESET */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212;
+  color: #ffffff;
+  line-height: 1.6;
+}
+
+header {
+  background: #1f1f1f;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #333;
+}
+
+header h1 {
+  font-size: 2rem;
+  color: #ff3d00;
+  letter-spacing: 2px;
+}
+
+main {
+  padding: 2rem;
+}
+
+/* DETAILS */
+.detail-card {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #1e1e1e;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 10px rgba(255, 61, 0, 0.1);
+}
+
+.detail-card img {
+  width: 300px;
+  border-radius: 10px;
+  margin-right: 2rem;
+}
+
+.detail-info {
+  flex: 1;
+  color: #fff;
+}
+
+.detail-info h1 {
+  color: #ff3d00;
+  margin-bottom: 1rem;
+}
+
+.detail-info p {
+  margin: 0.5rem 0;
+}
+
+/* REVIEWS - TMDB */
+#reviews-container {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #1e1e1e;
+  border-radius: 10px;
+}
+
+#reviews-container h3 {
+  color: #ff3d00;
+  margin-bottom: 1rem;
+}
+
+.comment {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #333;
+}
+
+/* USER COMMENTS */
+#user-comments {
+  margin-top: 2rem;
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+#user-comments h3 {
+  color: #ff3d00;
+  margin-bottom: 1rem;
+}
+
+#user-comment-input {
+  width: 100%;
+  padding: 1rem;
+  background-color: #2c2c2c;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  resize: none;
+  font-size: 1rem;
+}
+
+#submit-comment {
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #ff3d00;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#submit-comment:hover {
+  background-color: #e63c00;
+}
+
+.user-comment {
+  margin-top: 1rem;
+  padding: 0.8rem;
+  background-color: #2c2c2c;
+  border-radius: 8px;
+}
+
+.user-comment button {
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  background-color: #ff3d00;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.user-comment button:hover {
+  background-color: #e63c00;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .detail-card {
+    flex-direction: column;
+    align-items: center;
   }
-  
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #121212;
-    color: #ffffff;
-    line-height: 1.6;
+
+  .detail-card img {
+    margin-right: 0;
+    margin-bottom: 1rem;
+    width: 100%;
   }
-  
+
+  .detail-info {
+    text-align: center;
+  }
+}
